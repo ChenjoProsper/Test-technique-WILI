@@ -3,9 +3,6 @@ from sqlalchemy.orm import Session
 import utils
 from database import SessionLocal, engine
 
-# Création des tables
-models.Base.metadata.create_all(bind=engine)
-
 app = FastAPI(title="Alphabet Generator API")
 
 # Dépendance pour la DB
