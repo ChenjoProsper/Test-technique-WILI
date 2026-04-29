@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Alphabet Generator</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        #resultat { margin-top: 20px; padding: 15px; border: 1px solid #ddd; display: inline-block; min-width: 300px; }
+    </style>
+</head>
+<body>
+    <h1>Alphabet Generator</h1>
+    <button onclick="tirerSigne()">Tirer un signe</button>
+
+    <div id="resultat">
+        <p>Cliquez sur le bouton pour voir un signe.</p>
+    </div>
+
+    <script>
+        async function tirerSigne() {
+            try {
+                const response = await fetch('/fa/random');
+                const data = await response.json();
+                document.getElementById('resultat').innerHTML = `
+                    <h3>${data.signe}</h3>
+                    <p><em>${data.description}</em></p>
+                    <p><strong>Prescription:</strong> ${data.prescription || 'N/A'}</p>
+                `;
+            } catch (error) {
+                console.error("Erreur:", error);
+            }
+        }
+    </script>
+</body>
+</html>
