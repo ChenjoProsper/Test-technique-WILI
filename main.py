@@ -21,12 +21,11 @@ def get_db():
 def read_random_fa(n: int = 1, db: Session = Depends(get_db)):
     """
     Route principale renvoyant un ou plusieurs signes.
-    Gère le paramètre n pour le bonus[cite: 60].
     """
     signes_liste = utils.load_signes()
     
     if signes_liste is None:
-        # Gestion d'erreur 500 pour le bonus [cite: 61]
+        # Gestion d'erreur 500
         raise HTTPException(status_code=500, detail="Fichier signes.json introuvable.")
 
     import random
@@ -69,18 +68,22 @@ def create_prescription(item: PrescriptionCreate, db: Session = Depends(get_db))
     return {"status": "success", "data": new_presc}
 
 
+
+# CORS CONFIG
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Autorise toutes les sources (pour le test)
+    allow_origins=["*"], 
     allow_credentials=True,
-    allow_methods=["*"], # Autorise GET, POST, etc.
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+
 
 # Monte le dossier static pour servir les fichiers
 app.mount("/static", StaticFiles(directory="static"), name="static")

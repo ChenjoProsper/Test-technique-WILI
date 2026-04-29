@@ -25,7 +25,7 @@ Vous pouvez tester le fonctionnement de l'API en vous Rendant sur <http://127.0.
 ## Ce qui a été fait
 
 - Configuration : Initialisation du dépôt Git avec les branches main et feature/test
-- Backend : Création de l'API avec FastAPI, lecture du fichier signes.json et route /fa/random fonctionnelle 
+- Backend : Création de l'API avec FastAPI, lecture du fichier signes.json et route /fa/random fonctionnelle
 - Frontend : Fichier index.html utilisant fetch pour afficher le résultat sans rechargement de page
 - Intégration d'une base de données SQLite pour stocker et renvoyer les prescriptions
 - Paramètre ?n= pour renvoyer plusieurs signes
